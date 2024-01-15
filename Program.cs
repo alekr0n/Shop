@@ -1,4 +1,4 @@
-/*
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,12 +21,13 @@ namespace Shop
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
     }
-}*/
+}
 
-
+/*
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 //app.MapGet("/", () => "Hello World!");
 
 app.Run();
+*/

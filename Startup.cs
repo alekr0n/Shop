@@ -14,19 +14,31 @@ namespace Shop
 {
     public class Startup
     {
-        public void ConfigureServices(IServiceCollection services, MvcOptions mvcOptions)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IAllCars, MockCars>();
             services.AddTransient<ICarsCategory, MockCategory>();
+
+            services.AddControllers();
+            services.AddRazorPages();
             services.AddMvc();
-            mvcOptions.EnableEndpointRouting = false;
         }
 
-        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env) { 
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env) 
+        { 
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
+
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+            
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Cars}/{action=List}/{id?}");
+            });
         }
     }
 }
