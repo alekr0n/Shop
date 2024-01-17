@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System.Data.Entity;
+using Shop.Data;
 using Shop.Data.Interfaces;
 using Shop.Data.mocks;
 
@@ -14,8 +18,19 @@ namespace Shop
 {
     public class Startup
     {
+
+        private IConfigurationRoot _confString;
+
+        public Startup(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostEnv)
+        {
+            _confString = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsattongs.json").Build();
+        }
+
+
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDBContent>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
+
             services.AddTransient<IAllCars, MockCars>();
             services.AddTransient<ICarsCategory, MockCategory>();
 
