@@ -10,7 +10,7 @@ namespace Shop.Data.Interfaces
     {
         IEnumerable<Car> Cars { get; }
 
-        IEnumerable<Car> GetFavouriteCars { get; set; }
+        IEnumerable<Car> GetFavouriteCars { get; }
 
         Car GetObjectCar(int carId);
     }

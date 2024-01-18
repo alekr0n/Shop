@@ -13,6 +13,7 @@ using System.Data.Entity;
 using Shop.Data;
 using Shop.Data.Interfaces;
 using Shop.Data.mocks;
+using Shop.Data.Repository;
 
 namespace Shop
 {
@@ -31,8 +32,8 @@ namespace Shop
         {
             services.AddDbContext<AppDBContent>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
 
-            services.AddTransient<IAllCars, MockCars>();
-            services.AddTransient<ICarsCategory, MockCategory>();
+            services.AddTransient<IAllCars, CarRepository>();
+            services.AddTransient<ICarsCategory, CategoryRepository>();
 
             services.AddControllers();
             services.AddRazorPages();
@@ -54,6 +55,10 @@ namespace Shop
                     name: "default",
                     pattern: "{controller=Cars}/{action=List}/{id?}");
             });
+
+            using var scope = app.ApplicationServices.CreateScope();
+            AppDBContent content = scope.ServiceProvider.GetRequiredService<AppDBContent>();
+            DBObjects.Initial(content);
         }
     }
 }
