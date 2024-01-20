@@ -1,4 +1,5 @@
-﻿using Shop.Data.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Shop.Data.Models;
 
 namespace Shop.Data
 {
@@ -6,8 +7,42 @@ namespace Shop.Data
     {
         public static void Initial(AppDBContent content) 
         {
-            if (!content.Category.Any())
-                content.Category.AddRange(Categories.Select(c => c.Value));
+            if (content == null)
+            {
+                throw new ArgumentNullException(nameof(content), "The parameter 'content' cannot be null.");
+            }
+
+            try
+            {
+                if (!content.Category.Any())
+                {
+                    content.Category.AddRange(Categories.Select(c => c.Value));
+                }
+
+                content.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Вывести информацию об исключении в консоль для дополнительного анализа
+                Console.WriteLine($"DbUpdateException: {ex.Message}");
+                Console.WriteLine($"InnerException: {ex.InnerException?.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+
+                // Передать исключение дальше, если нужно
+                throw;
+            }
+            catch (Exception ex)
+            {
+                // Вывести информацию об исключении в консоль для дополнительного анализа
+                Console.WriteLine($"Exception: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+
+                // Передать исключение дальше, если нужно
+                throw;
+            }
+
+            //if (!content.Category.Any())
+            //    content.Category.AddRange(Categories.Select(c => c.Value));
 
             if (!content.Car.Any())
             {

@@ -1,12 +1,6 @@
-﻿using System.Data.Entity;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Data.Entity.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
 using Shop.Data.Models;
-using DbContext = Microsoft.EntityFrameworkCore.DbContext;
+//using DbContext = Microsoft.EntityFrameworkCore.DbContext;
 
 namespace Shop.Data
 {
@@ -14,7 +8,7 @@ namespace Shop.Data
     {
         public AppDBContent(DbContextOptions<AppDBContent> options) : base(options) { }
 
-        public System.Data.Entity.DbSet<Car> Car { get; set; }
-        public System.Data.Entity.DbSet<Category> Category { get; set; }
+        public DbSet<Car> Car { get; set; }
+        public DbSet<Category> Category { get; set; }
     }
 }

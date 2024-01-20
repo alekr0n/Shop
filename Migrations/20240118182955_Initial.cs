@@ -20,7 +20,7 @@ namespace Shop.Migrations
                     id = table.Column<int>(nullable: false)
                     .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     categoryName = table.Column<string>(nullable: true),
-                    desc = table.Column<string>(nullable: true),
+                    categoryDescription = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -35,7 +35,7 @@ namespace Shop.Migrations
                     .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     ShortDescription = table.Column<string>(nullable: true),
-                    LongDesccription = table.Column<string>(nullable: true),
+                    LongDescription = table.Column<string>(nullable: true),
                     img = table.Column<string>(nullable: true),
                     price = table.Column<int>(nullable: false),
                     isFavourite = table.Column<bool>(nullable: false),
