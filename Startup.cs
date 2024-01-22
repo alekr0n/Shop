@@ -14,6 +14,7 @@ using Shop.Data;
 using Shop.Data.Interfaces;
 using Shop.Data.mocks;
 using Shop.Data.Repository;
+using Shop.Data.Models;
 
 namespace Shop
 {
@@ -35,9 +36,15 @@ namespace Shop
             services.AddTransient<IAllCars, CarRepository>();
             services.AddTransient<ICarsCategory, CategoryRepository>();
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sp => ShopCart.GetCart(sp));
+
             services.AddControllers();
             services.AddRazorPages();
             services.AddMvc();
+
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env) 
@@ -46,7 +53,7 @@ namespace Shop
             app.UseStatusCodePages();
 
             app.UseStaticFiles();
-            
+            app.UseSession();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
