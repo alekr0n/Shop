@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\img\" />
-    <Folder Include="wwwroot\myjs\" />
   </ItemGroup>
 
   <ItemGroup>

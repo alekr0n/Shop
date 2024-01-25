@@ -4,34 +4,38 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="~/mycss/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="~/mycss/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <header data-bs-theme="dark">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Carousel</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Alekron</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Cars/List">Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Cars/List/Electro">Electro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Cars/List/Fuel">Fuel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ShopCart/">Busket</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 ml-2 mb-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
         </nav>
     </header>
@@ -39,8 +43,8 @@
         @RenderBody()
     </div>
     <footer class="container">
-        <p class="float-end"><a href="#">Back to top</a></p>
-        <p>© 2017–2023 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>© 2024 Alekron Games · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
     </footer>
     <script scr="~/js/bootstrap.min.js"></script>
 </body>

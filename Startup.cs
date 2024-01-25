@@ -54,14 +54,27 @@ namespace Shop
 
             app.UseStaticFiles();
             app.UseSession();
+
+            /*app.UseMvc(routes =>
+            {
+                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(name: "categoryFilter", template: "Car/{action}/{category?}", defaults: new { Controller="Car", action="List" });
+
+            });*/
+            
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Cars}/{action=List}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "categoryFilter",
+                    pattern: "{controller=Car}/{action}/{category?}", defaults: new { Controller = "Car", action = "List" });
             });
+            
 
             using var scope = app.ApplicationServices.CreateScope();
             AppDBContent content = scope.ServiceProvider.GetRequiredService<AppDBContent>();
