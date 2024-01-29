@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/mycss/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="~/mycss/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="~/mycss/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -17,7 +17,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Cars/List">Cars</a>
@@ -46,6 +46,6 @@
         <p class="float-right"><a href="#">Back to top</a></p>
         <p>© 2024 Alekron Games · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
     </footer>
-    <script scr="~/js/bootstrap.min.js"></script>
+    <script scr="~/myjs/bootstrap.min.js"></script>
 </body>
 </html>
