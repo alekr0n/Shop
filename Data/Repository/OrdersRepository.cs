@@ -18,15 +18,15 @@ namespace Shop.Data.Repository
         {
             order.orderTime = DateTime.Now;
             appDBContent.Orders.Add(order);
+			appDBContent.SaveChanges();
+			var items = shopCart.listShopItems;
 
-            var items = shopCart.listShopItems;
-
-            foreach (var el in  items)
+            foreach (var el in items)
             {
                 var orderDetail = new OrderDetail()
                 {
-                    carID = el.car.Id,
                     orderID = order.id,
+                    carID = el.car.Id,
                     price = el.car.price
                 };
                 appDBContent.OrderDetails.Add(orderDetail);

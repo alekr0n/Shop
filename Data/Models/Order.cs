@@ -10,29 +10,29 @@ namespace Shop.Data.Models
 
         [Display(Name = "First name")]
         [StringLength(25)]
-        [Required(ErrorMessage = "The name must contain at least 2 characters")]
+        [Required(ErrorMessage = "The name field is required.")]
         public string name { get; set; }
 
         [Display(Name = "Last name")]
         [StringLength(25)]
-        [Required(ErrorMessage = "The last name must contain at least 3 characters")]
+        [Required(ErrorMessage = "The last name field is required.")]
         public string surname { get; set; }
 
-        [Display(Name = "Adres")]
+        [Display(Name = "Addres")]
         [StringLength(35)]
-        [Required(ErrorMessage = "The adres must contain at least 5 characters")]
+        [Required(ErrorMessage = "The address field is required.")]
         public string adress { get; set; }
 
         [Display(Name = "Number phone")]
         [StringLength(20)]
         [DataType(DataType.PhoneNumber)]
-        [Required(ErrorMessage = "The number must contain at least 10 characters")]
+        [Required(ErrorMessage = "The phone number field is required.")]
         public string phone { get; set; }
 
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
         [StringLength(25)]
-        [Required(ErrorMessage = "The email must contain at least 15 characters")]
+        [Required(ErrorMessage = "The email field is required.")]
         public string email { get; set; }
 
         [BindNever]

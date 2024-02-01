@@ -1,12 +1,25 @@
 ﻿@model ShopCartViewModel
 <div class="container">
-	@foreach (var el in Model.shopCart.listShopItems)
+	@{bool isButtonEnabled;}
+	@if (!Model.shopCart.listShopItems.Any())
 	{
+		isButtonEnabled = false;
 		<div class="alert alert-warning mt-3">
-			<b>Car:</b> @el.car.Name<br />
-			<b>Price:</b> @el.car.price.ToString("c")
+			<b>Your busket is empty.</b> Add something to it :)<br />
 		</div>
 	}
+	else
+	{
+		isButtonEnabled = true;
+		@foreach (var el in Model.shopCart.listShopItems)
+		{
+			<div class="alert alert-warning mt-3">
+				<b>Car:</b> @el.car.Name<br />
+				<b>Price:</b> @el.car.price.ToString("c")
+			</div>
+		}
+	}
 	<hr />
-	<a class="btn btn-danger" asp-controller="Order" asp-action="Chekout">Pay</a>
+	<a class="btn btn-danger @(isButtonEnabled ? "" : "disabled")"
+	   asp-controller="Order" asp-action="Chekout")>Pay</a>
 </div>

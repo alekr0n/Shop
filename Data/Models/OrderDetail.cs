@@ -8,7 +8,7 @@
 
         public int carID { get; set; }
 
-        public uint price { get; set; }
+        public ushort price { get; set; }
 
         public virtual Car car { get; set; }
 

@@ -20,6 +20,7 @@ namespace Shop.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult Chekout(Order order)
         {
@@ -29,11 +30,8 @@ namespace Shop.Controllers
                 ModelState.AddModelError("", "Busket empty");
             }
 
-            if(ModelState.IsValid)
-            {
-                allOrders.createOrder(order);
-                return RedirectToAction("Complete");
-            }
+            allOrders.createOrder(order);
+            return RedirectToAction("Complete");
 
             return View(order);
         }
